@@ -23,15 +23,7 @@ module.exports = {
             presets: ['es2015', 'stage-0']
           }
         }
-      },
-      {
-        test: /\.(js)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
+      }
     ]
   },
   plugins: [

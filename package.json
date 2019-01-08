@@ -1,6 +1,6 @@
 {
-  "name": "vue-trans",
-  "version": "0.0.3",
+  "name": "vue-symfony-translator",
+  "version": "0.0.6",
   "description": "A filter to provide similar use of translations as with Symfony | trans",
   "main": "dist/vue-trans.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Trekels/vue-trans.git"
+    "url": "git@sl-lt-gitlab.ltur.net:ltur-web/vue-symfony-translator.git"
   },
   "keywords": [
     "vuejs",
@@ -18,11 +18,8 @@
     "vue-filter",
     "symfony"
   ],
-  "author": "Trekels",
+  "author": "Damian Dochat with work from Trekels",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Trekels/vue-trans/issues"
-  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
@@ -39,5 +36,8 @@
     "jest": "^21.2.1",
     "webpack": "^3.8.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig":{
+    "registry":"http://sl-lt-jenkins01.ltur.net:4873"
+  }
 }
