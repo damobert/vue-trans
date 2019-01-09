@@ -289,9 +289,12 @@ switch (_locale) {
 }
 
 
-export default (key, context, number, translationsObject) => {
+export default (key, context) => {
 
-  console.log(key, context, number, translationsObject)
+  let number = context.number ? context.number : 0;
+  let translationsObject = context.translationsObject ? context.translationsObject : {};
+
+  console.log(context)
 
   let translation = key;
 
@@ -299,18 +302,19 @@ export default (key, context, number, translationsObject) => {
     translation = translationsObject[key];
 
     let message = pluralize(translation, number);
-    console.log(message)
     const matches = message.match(/(%([^%]|%%)*%)/g);
 
     if (matches) {
       matches.forEach((match) => {
-        // const prop = match.replace(/[%]+/g, '');
+        const prop = match.replace(/[%]+/g, '');
+    
         // if (!Object.prototype.hasOwnProperty.call(context, prop)) {
         //   return;
         // }
 
         const regex = new RegExp(match, 'g');
-        return translation.replace(regex, context[prop]);
+        message = message.replace(regex, context[prop]);
+        console.log(prop, match, message)
       });
     }
 
