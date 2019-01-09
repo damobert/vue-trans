@@ -304,16 +304,16 @@ export default (key, context, number, translationsObject) => {
 
     if (matches) {
       matches.forEach((match) => {
-        const prop = match.replace(/[%]+/g, '');
-        if (!Object.prototype.hasOwnProperty.call(context, prop)) {
-          return;
-        }
+        // const prop = match.replace(/[%]+/g, '');
+        // if (!Object.prototype.hasOwnProperty.call(context, prop)) {
+        //   return;
+        // }
 
         const regex = new RegExp(match, 'g');
         return translation.replace(regex, context[prop]);
       });
     }
-    
+
     translation = message;
 
   }
