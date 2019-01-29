@@ -81,7 +81,7 @@ function pluralize(message, number, locale) {
     if (_cPluralRegex.test(part)) {
       matches = part.match(_cPluralRegex);
       explicitRules[matches[0]] = matches[matches.length - 1];
-    } else if (_sPluralRegex.test(_part)) {
+    } else if (_sPluralRegex.test(part)) {
       matches = part.match(_sPluralRegex);
       standardRules.push(matches[1]);
     } else {
@@ -114,7 +114,7 @@ function pluralize(message, number, locale) {
     }
   }
 
-  return _standardRules[plural_position(number, locale)] || _standardRules[0] || undefined;
+  return standardRules[plural_position(number, locale)] || standardRules[0] || undefined;
 }
  
 /**
@@ -291,7 +291,6 @@ switch (_locale) {
 
 export default (key, context) => {
 
-  let number = context.number ? context.number : 0;
   let translationsObject = context.translationsObject ? context.translationsObject : {};
 
   console.log(context)
@@ -301,7 +300,7 @@ export default (key, context) => {
   if (translationsObject !== undefined && translationsObject[key] !== undefined) {
     translation = translationsObject[key];
 
-    let message = pluralize(translation, number);
+    let message = context.count ? pluralize(translation, context.count) : translation;
     const matches = message.match(/(%([^%]|%%)*%)/g);
 
     if (matches) {
